@@ -10,27 +10,27 @@
 合并结果是 [1,2,2,3,5,6] ，其中斜体加粗标注的为 nums1 中的元素。
 
 用时：21分钟
-
-
+```c#
+{
 public class Solution {
     public void Merge(int[] nums1, int m, int[] nums2, int n) {
+            int a = m-1;
+            int b = n-1;
+            int k = m+n-1;
 
-        int a = m-1;
-        int b = n-1;
-        int k = m+n-1;
-
-        // 从nums1尾部添加避免失去nums1中本身有的数据
-        // a和b作为指针
-        // 对比指针元素下nums1和nums2中的数据加入到nums1尾部
+            // 从nums1尾部添加避免失去nums1中本身有的数据
+            // a和b作为指针
+            // 对比指针元素下nums1和nums2中的数据加入到nums1尾部
         
-        while(a >= 0 && b >=0)
-        {
-            if(nums1[a] >= nums2[b]) nums1[k--] = nums1[a--];
-            else nums1[k--] = nums2[b--];
-        }
+            while(a >= 0 && b >=0)
+            {
+                if(nums1[a] >= nums2[b]) nums1[k--] = nums1[a--];
+                else nums1[k--] = nums2[b--];
+            }
 
-        // 将剩余多出来的部分直接添加进结果中
-        while(a>=0) nums1[k--] = nums1[a--];
-        while(b>=0) nums1[k--] = nums2[b--];
+            // 将剩余多出来的部分直接添加进结果中
+            while(a>=0) nums1[k--] = nums1[a--];
+            while(b>=0) nums1[k--] = nums2[b--];
+        }
     }
 }
