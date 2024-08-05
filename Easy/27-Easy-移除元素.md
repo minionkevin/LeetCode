@@ -34,4 +34,27 @@ public class Solution {
 
     }
 }
+```
 
+更好优化版本：
+不使用多余的curr直接用keeper作为index
+
+```c#
+public class Solution {
+    public int RemoveElement(int[] nums, int val) {
+
+        int keeper = 0;
+
+        // 当前不等于val直接把当前数字放到pointer处
+        for(int i = 0; i < nums.Length;i++)
+        {
+            if(nums[i] != val) 
+            {
+                nums[keeper++]  = nums[i];
+            }
+        }
+        return keeper;
+
+    }
+}
+```
