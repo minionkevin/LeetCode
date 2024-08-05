@@ -11,7 +11,7 @@
 
 用时：21分钟
 ```c#
-{
+
 public class Solution {
     public void Merge(int[] nums1, int m, int[] nums2, int n) {
             int a = m-1;
@@ -33,4 +33,4 @@ public class Solution {
             while(b>=0) nums1[k--] = nums2[b--];
         }
     }
-}
+
