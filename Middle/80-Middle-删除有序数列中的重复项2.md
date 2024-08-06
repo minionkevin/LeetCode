@@ -47,3 +47,31 @@ public class Solution {
 }
 ```
 
+```c#
+class Solution {
+    public int RemoveDuplicates(int[] nums) {
+
+        int n = nums.Length;
+        if(n<2) return n;
+        int slow = 2, fast = 2;
+
+        while(fast<n)
+        {
+            // slow - 2 对比index
+            // fast 检查index
+
+            // 这两个位置不相等说明fast位置通过检查
+            // 更新数字后slow++检查下一个位置
+            if(nums[slow-2]!=nums[fast])
+            {
+                nums[slow] = nums[fast];
+                ++slow;
+            }
+            // 直到找到不相等的数字
+            ++fast;
+        }
+        return slow;
+    }
+}
+```
+
