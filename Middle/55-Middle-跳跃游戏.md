@@ -6,6 +6,34 @@
 输出：true
 解释：可以先跳 1 步，从下标 0 到达下标 1, 然后再从下标 1 跳 3 步到达最后一个下标。
 
-- [ ] 2024-08-08:
+- [x] 2024-08-08: 28:26
+
+```c#
+public class Solution {
+    public bool CanJump(int[] nums) {
+        // 处理特殊情况
+        if(nums.Length == 1) return true;
+
+        int[] dp = new int[nums.Length];
+        int keeper = 0;
+
+        for(int i = 0; i < nums.Length; i++)
+        {
+            // dp==0代表之前的步骤到不了这一步
+            if(i>=1 && dp[i] ==0) return false;
+            keeper = i+1;
+            // 计算现在的index可以到哪一步存在dp中
+            for(int j = nums[i]; j > 0; j--)
+            {
+                if(keeper >= nums.Length) break;
+                dp[keeper]++;
+                keeper++;
+            }
+        }
+
+        return dp[nums.Length-1] != 0;
+    }
+}
+```
 
       
