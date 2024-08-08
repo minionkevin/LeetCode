@@ -36,4 +36,26 @@ public class Solution {
 }
 ```
 
+官方题解
+```c
+public class Solution {
+    public bool CanJump(int[] nums) {
+        int n = nums.Length;
+        int rightmost = 0;
+
+        for(int i = 0; i < n; i++)
+        {
+            if(i <= rightmost)
+            {
+                // 更新最大可达位置
+                rightmost = Math.Max(rightmost, i + nums[i]);
+                // 如果最大可抵达位置比数组长，直接成功
+                if(rightmost > n-1) return true;
+            }
+        }
+        return false;
+    }
+}
+```
+
       
