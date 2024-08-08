@@ -57,5 +57,30 @@ public class Solution {
     }
 }
 ```
+dp计算之后处理空
+```c#
+public class Solution {
+    public bool CanJump(int[] nums) {
+        // 处理特殊情况
+        if(nums.Length < 2 ) return true;
 
+        int[] dp = new int[nums.Length];
+
+        for(int i = 0; i < nums.Length - 1; i++)
+        {
+            int keeper = i+1;
+            for(int j = nums[i]; j > 0; j--)
+            {
+                if(keeper >= nums.Length) break;
+                dp[keeper]++;
+                keeper++;
+            }
+
+            if(dp[i+1]==0) return false;
+        }
+
+        return dp[nums.Length-1] != 0;
+    }
+}
+```
       
