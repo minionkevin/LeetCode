@@ -50,7 +50,7 @@ public class Solution {
                 // 更新最大可达位置
                 rightmost = Math.Max(rightmost, i + nums[i]);
                 // 如果最大可抵达位置比数组长，直接成功
-                if(rightmost > n-1) return true;
+                if(rightmost >= n-1) return true;
             }
         }
         return false;
