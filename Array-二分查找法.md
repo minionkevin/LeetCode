@@ -142,6 +142,48 @@ public class Solution {
 }
 ```
 
+## 69 Sqrt(x)
+Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
+You must not use any built-in exponent function or operator.
+For example, do not use pow(x, 0.5) in c++ or x ** 0.5 in python.
+
+Example 1:
+
+Input: x = 4
+Output: 2
+Explanation: The square root of 4 is 2, so we return 2.
+
+- [ ]2024-08-12: 06:56
+
+```c#
+public class Solution {
+    public int MySqrt(int x) {
+        if(x == 0) return 0;
+
+        int left = 1;
+        int right = x;
+
+        while(left<=right)
+        {
+            int middle = (right+left)/2;
+            // 除法防止溢出
+            if(middle < x/middle)
+            {
+                left = middle + 1;
+            }
+            else if(middle > x/middle)
+            {
+                right = middle - 1;
+            }
+            else return middle;
+        }
+        // 返回右边因为用的左闭右开
+        return right;
+    }
+}
+```
+
+
 
 
 
