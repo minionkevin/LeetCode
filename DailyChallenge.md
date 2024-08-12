@@ -51,3 +51,18 @@ public class Solution {
     }
 }
 ```
+题解版本，实际不需要一个list去装，只需要一个last来存放之前的答案
+```c#
+public class Solution {
+    public bool IsArraySpecial(int[] nums) {
+        var last = -1;
+        foreach(var num in nums)
+        {
+            var current = num % 2;
+            if(current == last) return false;
+            last = current;
+        }
+        return true;
+    }
+}
+```
