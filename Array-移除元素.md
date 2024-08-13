@@ -61,8 +61,33 @@ public class Solution {
     }
 }
 ```
+## 283 Move Zeroes
+Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+Note that you must do this in-place without making a copy of the array.
 
+Example 1:
+Input: nums = [0,1,0,3,12]
+Output: [1,3,12,0,0]
 
+- [x] 2024-08-13: 16:05
+
+```c#
+public class Solution {
+    public void MoveZeroes(int[] nums) {
+        int curr = 0;
+        for(int i = 0; i < nums.Length; i++)
+        {
+            if(nums[i]!=0)
+            {
+                nums[curr] = nums[I];
+                // 只有当quick比slow快的时候才用置空本位数
+                if(curr < i) nums[i] = 0;
+                curr++;
+            }
+        }
+    }
+}
+```
 
 
 
