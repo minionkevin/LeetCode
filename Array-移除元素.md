@@ -1,3 +1,9 @@
+# 数组-移除元素
+
+|Date\Question|27-E|26-E|283-E|844-E|977-E|
+|:----:|:----:|:----:|:----:|:----:|:----:|
+|2024-08-13|Y|Y|Y|Y|Y|
+
 ## 27 Remove Element
 
 Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
@@ -62,6 +68,7 @@ public class Solution {
 }
 ```
 ## 283 Move Zeroes
+
 Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
 Note that you must do this in-place without making a copy of the array.
 
@@ -90,6 +97,7 @@ public class Solution {
 ```
 
 ## 844 Backspace String Compare
+
 Given two strings s and t, return true if they are equal when both are typed into empty text editors. '#' means a backspace character.
 Note that after backspacing an empty text, the text will continue empty.
 
@@ -149,6 +157,7 @@ public class Solution {
 }
 ```
 ## 977 Squares of a Sorted Array
+
 Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
 
 Example 1:
