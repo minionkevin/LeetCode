@@ -182,5 +182,22 @@ public class Solution {
     }
 }
 ```
-
-
+题解：双指针思路，把最小的（大概率是负数后的平方）和右边最大的对比，然后放回数组中
+```c#
+public class Solution {
+    public int[] SortedSquares(int[] nums) {
+        int k = nums.Length - 1;
+        int[] result = new int[nums.Length];
+        for (int i = 0, j = nums.Length - 1;i <= j;){
+            if (nums[i] * nums[i] < nums[j] * nums[j]) {
+                result[k--] = nums[j] * nums[j];
+                j--;
+            } else {
+                result[k--] = nums[i] * nums[i];
+                i++;
+            }
+        }
+        return result;
+    }
+}
+```
