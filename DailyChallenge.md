@@ -1,6 +1,7 @@
 # Daily challenge
 
 ## 3151 Special Array I
+
 An array is considered special if every pair of its adjacent elements contains two numbers with different parity.
 You are given an array of integers nums. Return true if nums is a special array, otherwise, return false.
 
@@ -63,6 +64,45 @@ public class Solution {
             last = current;
         }
         return true;
+    }
+}
+```
+
+## Special Array II
+
+An array is considered special if every pair of its adjacent elements contains two numbers with different parity.
+You are given an array of integer nums and a 2D integer matrix queries, where for queries[i] = [fromi, toi] your task is to check that 
+subarray
+ nums[fromi..toi] is special or not.
+Return an array of booleans answer such that answer[i] is true if nums[fromi..toi] is special.
+
+Example 1:
+Input: nums = [3,4,1,2,6], queries = [[0,4]]
+Output: [false]
+Explanation:
+The subarray is [3,4,1,2,6]. 2 and 6 are both even.
+
+- [ ] 2024-08-13: 28:02
+
+官方题解
+```c#
+public class Solution {
+    public bool[] IsArraySpecial(int[] nums, int[][] queries) {
+        int n = nums.Length;
+        int[] dp = new int[n];
+        Array.Fill(dp, 1);
+        for (int i = 1; i < n; i++) {
+            if (((nums[i] ^ nums[i - 1]) & 1) != 0) {
+                dp[i] = dp[i - 1] + 1;
+            }
+        }
+
+        bool[] res = new bool[queries.Length];
+        for (int i = 0; i < queries.Length; i++) {
+            int x = queries[i][0], y = queries[i][1];
+            res[i] = dp[y] >= y - x + 1;
+        }
+        return res;
     }
 }
 ```
