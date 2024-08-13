@@ -11,7 +11,7 @@ Output: 2, nums = [2,2,_,_]
 Explanation: Your function should return k = 2, with the first two elements of nums being 2.
 It does not matter what you leave beyond the returned k (hence they are underscores).
 
-- [x]2024-08-13: 01:22
+- [x] 2024-08-13: 01:22
 
 ```c#
   public class Solution {
@@ -46,7 +46,7 @@ Output: 2, nums = [1,2,_]
 Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
 It does not matter what you leave beyond the returned k (hence they are underscores).
 
-- [x]2024-08-13: 01:05
+- [x] 2024-08-13: 01:05
 
 ```c#
 public class Solution {
