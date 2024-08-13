@@ -89,6 +89,65 @@ public class Solution {
 }
 ```
 
+## 844 Backspace String Compare
+Given two strings s and t, return true if they are equal when both are typed into empty text editors. '#' means a backspace character.
+Note that after backspacing an empty text, the text will continue empty.
+
+Example 1:
+Input: s = "ab#c", t = "ad#c"
+Output: true
+Explanation: Both s and t become "ac".
+
+- [x] 2024-08-13: 05:29
+
+```c#
+public class Solution {
+    public bool BackspaceCompare(string s, string t) {
+        return RemoveCharacters(s).ToString() == RemoveCharacters(t).ToString();
+    }
+
+    public StringBuilder RemoveCharacters(string input)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        int curr = 0;
+
+        for(int i = 0; i < input.Length;i++)
+        {
+            if(input[i]!='#')
+            {
+                sb.Append(input[i]);
+                curr++;
+            }
+            else
+            {
+                if(sb.Length>0) sb.Remove(sb.Length-1,1);
+            }
+        }
+        return sb;
+    }
+}
+```
+因为类似于取一个放一个，也可以用stack解决
+```c#
+public class Solution {
+    public bool BackspaceCompare(string s, string t) {
+        return RemoveCharacters(s) == RemoveCharacters(t);
+    }
+
+    public string  RemoveCharacters(string input)
+    {
+        Stack<char> s = new Stack<char>();
+        for(int i = 0; i < input.Length; i++)
+        {
+            if(input[i] != '#') s.Push(input[i]);
+            else if(s.Count > 0) s.Pop();
+        }
+        char[] res = s.ToArray();
+        return new string(res);
+    }
+}
+```
 
 
 
