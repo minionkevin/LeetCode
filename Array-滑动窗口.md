@@ -2,10 +2,10 @@
 
 |Date\Question|209-M|904-M|76-H|
 |:----:|:----:|:----:|:----:|
-|2024-08-13|X|X|N|
+|2024-08-14|X|X| |
+|2024-09-03|X|X|N|
 
 ## 209 Minimum Size Subarray Sum
-M
 Given an array of positive integers nums and a positive integer target, return the minimal length of a 
 subarray
 whose sum is greater than or equal to target. If there is no such subarray, return 0 instead.
