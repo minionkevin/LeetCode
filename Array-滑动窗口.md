@@ -75,7 +75,8 @@ Input: fruits = [1,2,1]
 Output: 3
 Explanation: We can pick from all 3 trees.
 
-- [ ]2024-08-14: 41:44
+- [ ] 2024-08-14: 41:44
+- [ ] 2024-09-03: 08:23
 
 理论没问题但是又超时啦
 ```c#
@@ -142,3 +143,6 @@ public class Solution {
     }
 }
 ```
+// 用dictionary可以避免用list没法判断left和right中间还有没有这种水果
+// key=fruits[index],value=出现的次数
+// 当前水果超过两种之后就可以收缩滑动窗口的长度
