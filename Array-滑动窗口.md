@@ -146,3 +146,6 @@ public class Solution {
 // 用dictionary可以避免用list没法判断left和right中间还有没有这种水果
 // key=fruits[index],value=出现的次数
 // 当前水果超过两种之后就可以收缩滑动窗口的长度
+
+
+*** 76
