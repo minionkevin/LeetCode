@@ -12,6 +12,7 @@ Output: 2
 Explanation: The subarray [4,3] has the minimal length under the problem constraint.
 
 - [ ]2024-08-14: 08:51
+- [ ]2024-09-03: 12:00
 
 理论上没问题，但是超出时间限制
 ```c#
