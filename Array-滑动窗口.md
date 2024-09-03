@@ -1,6 +1,10 @@
+# 数组-滑动窗口
 
+|Date\Question|209-M|904-M|76-H|
+|:----:|:----:|:----:|:----:|
+|2024-08-13|N|N|N|
 
-## Minimum Size Subarray Sum
+## 209 Minimum Size Subarray Sum
 M
 Given an array of positive integers nums and a positive integer target, return the minimal length of a 
 subarray
