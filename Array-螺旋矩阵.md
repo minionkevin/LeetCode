@@ -36,3 +36,70 @@ public class Solution {
     }
 }
 ```
+
+## 54 Spiral Matrix
+Given an m x n matrix, return all elements of the matrix in spiral order.
+
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]
+
+- [ ] 2024-09-03: 15:40
+
+```c#
+public class Solution {
+    public IList<int> SpiralOrder(int[][] matrix) {
+        List<int> ans = new List<int>();
+        int start = 0;
+        int rows = matrix.Length;
+        int columns = matrix[0].Length;
+        int loop = Math.Min(rows,columns)/2;
+        int mid = loop;
+        int offSet = 1;
+        int i,j;
+
+        while(loop-->0)
+        {
+            i=j=start;
+            
+            //从左往右
+            for(; j < columns - offSet; j++)
+                ans.Add(matrix[i][j]);
+
+            //从上往下
+            for(; i < rows - offSet; i++)
+                ans.Add(matrix[i][j]);
+
+            //从右往左
+            for(; j > start; j--)
+                ans.Add(matrix[i][j]);
+            
+            //从下往上
+            for(; i > start; i--)
+                ans.Add(matrix[i][j]);
+
+            //每循环一次 改变起点位置
+            start++;
+            //终止条件改变
+            offSet++;
+        }
+
+        //如果行和列中的最小值是奇数 则会产生中间行或者中间列没有遍历
+        if(Math.Min(rows,columns) % 2 != 0) {
+            //行大于列则产生中间列
+            if(rows > columns) {
+                //中间列的行的最大下标的下一位的下标为mid + rows - columns + 1
+                for(int k = mid; k < mid + rows - columns + 1; k++) {
+                    ans.Add(matrix[k][mid]);
+                }
+            }else {//列大于等于行则产生中间行
+                //中间行的列的最大下标的下一位的下标为mid + columns - rows + 1
+                for(int k = mid; k < mid + columns - rows + 1; k++) {
+                    ans.Add(matrix[mid][k]);
+                }
+            }
+        }
+
+        return ans;
+    }
+}
+```
