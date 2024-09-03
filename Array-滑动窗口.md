@@ -2,7 +2,7 @@
 
 |Date\Question|209-M|904-M|76-H|
 |:----:|:----:|:----:|:----:|
-|2024-08-13|N|N|N|
+|2024-08-13|X|X|N|
 
 ## 209 Minimum Size Subarray Sum
 M
