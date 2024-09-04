@@ -1,8 +1,8 @@
 # HashTable-基础
 
-|Date\Question|242-E|
-|:----:|:----:|
-|2024-09-04|Y|
+|Date\Question|242-E|383-E|
+|:----:|:----:|:----:|
+|2024-09-04|Y| |
 
 ## 242 Valid Anagram
 Given two strings s and t, return true if t is an anagram of s, and false otherwise.
@@ -55,6 +55,36 @@ public class Solution {
         foreach(int i in a )
         {
             if(i!=0) return false;
+        }
+        return true;
+    }
+}
+```
+
+## 383 Ransom Note
+Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
+Each letter in magazine can only be used once in ransomNote.
+
+Input: ransomNote = "a", magazine = "b"
+Output: false
+
+- [X] 2024-09-04: 07:23
+
+```c#
+public class Solution {
+    public bool CanConstruct(string ransomNote, string magazine) {
+        if(ransomNote.Length > magazine.Length) return false;
+
+        int[] nums = new int[26];
+        for(int i = 0; i < magazine.Length;i++)
+        {
+            nums[magazine[i] - 'a']++;
+            if(i<ransomNote.Length) nums[ransomNote[i] - 'a']--;
+        }
+
+        foreach(int i in nums)
+        {
+            if(i<0) return false;
         }
         return true;
     }
