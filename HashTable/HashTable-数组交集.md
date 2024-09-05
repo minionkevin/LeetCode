@@ -13,6 +13,9 @@ Output: [2]
 
 - [X] 2024-09-05: 17:25
 
+// 这里他并不在意重复了几次完全可以用hashset来做
+// 将本身nums1和nums2中重复过的省略掉
+// 然后nums1 intersction with nums2
 ```c#
 public class Solution {
     public int[] Intersection(int[] nums1, int[] nums2) {
