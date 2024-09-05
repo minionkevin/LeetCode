@@ -2,7 +2,7 @@
 
 |Date\Question|349-E|350-E|
 |:----:|:----:|:----:|
-|2024-09-03|Y|Y|
+|2024-09-05|Y|Y|
 
 
 ## 349 Intersection of Two Arrays
