@@ -1,8 +1,8 @@
 # HashTable-基础
 
-|Date\Question|242-E|383-E|
-|:----:|:----:|:----:|
-|2024-09-04|Y| |
+|Date\Question|242-E|383-E|49-M|
+|:----:|:----:|:----:|:----:|
+|2024-09-04\05|Y|Y|X|
 
 ## 242 Valid Anagram
 Given two strings s and t, return true if t is an anagram of s, and false otherwise.
@@ -87,6 +87,38 @@ public class Solution {
             if(i<0) return false;
         }
         return true;
+    }
+}
+```
+
+## 49 Group Anagrams
+Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+
+Input: strs = ["eat","tea","tan","ate","nat","bat"]
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+Explanation:
+There is no string in strs that can be rearranged to form "bat".
+The strings "nat" and "tan" are anagrams as they can be rearranged to form each other.
+The strings "ate", "eat", and "tea" are anagrams as they can be rearranged to form each other.
+
+- [ ] 2024-09-05: 11：43
+
+```c#
+public class Solution {
+    public IList<IList<string>> GroupAnagrams(string[] strs) {
+        IDictionary<string, IList<string>> dictionary = new Dictionary<string, IList<string>>();
+        foreach (string str in strs) {
+            // 将string拆分成char
+            char[] array = str.ToCharArray();
+            // 按顺序排列
+            Array.Sort(array);
+            // 返回成string
+            string key = new string(array);
+            // 添加到结果
+            dictionary.TryAdd(key, new List<string>());
+            dictionary[key].Add(str);
+        }
+        return new List<IList<string>>(dictionary.Values);
     }
 }
 ```
