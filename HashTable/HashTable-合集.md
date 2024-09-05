@@ -1,4 +1,8 @@
+# HashTable-合集
 
+|Date\Question|202-E|
+|:----:|:----:|
+|2024-09-04\05|Y|
 
 ## 202 Happy Number
 Write an algorithm to determine if a number n is happy.
