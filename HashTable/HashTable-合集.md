@@ -2,7 +2,7 @@
 
 |Date\Question|202-E|001-E|
 |:----:|:----:|:----:|
-|2024-09-09|Y| |
+|2024-09-09|Y|Y|
 
 ## 202 Happy Number
 Write an algorithm to determine if a number n is happy.
@@ -53,6 +53,7 @@ public class Solution {
 ```
 
 题解
+// hashset O(1), list O(n)
 ```c#
 public class Solution {
     private int getSum(int n) {
@@ -84,4 +85,53 @@ Input: nums = [2,7,11,15], target = 9
 Output: [0,1]
 Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
 
-- [ ] 2024-09-09:
+- [X] 2024-09-09: 02:42
+
+```c#
+public class Solution {
+    public int[] TwoSum(int[] nums, int target) {
+        for(int i = 0; i < nums.Length;i++)
+        {
+            for(int j = i+1; j < nums.Length;j++)
+            {
+                if(nums[i] + nums[j] == target)
+                {
+                    return new int[]{i,j};
+                }
+            }
+        }
+
+        return new int[]{-1};
+
+    }
+}
+```
+// 这里用的是key装nums[n]，value装index
+// 不用担心重复是因为先检查答案后存入
+题解
+```c#
+public class Solution {
+    public int[] TwoSum(int[] nums, int target) {
+        Dictionary<int ,int> dic= new Dictionary<int,int>();
+        for(int i=0;i<nums.Length;i++){
+            
+            // 计算要找的另一半
+            int imp= target-nums[i];
+
+            // 如果另一半已经存在dic而且不是本身
+            // 直接返回答案
+            if(dic.ContainsKey(imp)&&dic[imp]!=i){
+               return new int[]{i, dic[imp]};
+            }
+
+            // 存新的元素
+            // 如果这个已经存在不再添加
+            // 假设index0,value4和1,4,如果target是8上一步应该已经return了,所以不用存
+            if(!dic.ContainsKey(nums[i])){
+                dic.Add(nums[i],i);
+            }
+        }
+        return new int[]{0, 0};
+    }
+}
+```
