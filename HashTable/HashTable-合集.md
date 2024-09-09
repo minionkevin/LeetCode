@@ -109,6 +109,7 @@ public class Solution {
 // 这里用的是key装nums[n],value装index
 // 不用担心重复是因为先检查答案后存入
 // 什么时候用哈希表,当我们需要查询一个元素是否出现过，或者一个元素是否在集合里的时候
+// 如果反过来用value装nums[n],index虽然是唯一的。但是遍历dic的时候没办法用value拿到key也不能直接返回index
 
 题解
 ```c#
