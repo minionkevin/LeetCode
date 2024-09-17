@@ -1,8 +1,8 @@
 # HashTable-合集
 
-|Date\Question|202-E|001-E|454-M|383-E|15-M|
-|:----:|:----:|:----:|:----:|:----:|:----:|
-|2024-09-09|Y|Y|X|Y| |
+|Date\Question|202-E|001-E|454-M|383-E|15-M|18-M|
+|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+|2024-09-09|Y|Y|X|Y|X|?|
 
 ## 202 Happy Number
 Write an algorithm to determine if a number n is happy.
@@ -367,3 +367,15 @@ public class Solution
     }
 }
 ```
+
+## 18 4Sum
+Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+0 <= a, b, c, d < n
+a, b, c, and d are distinct.
+nums[a] + nums[b] + nums[c] + nums[d] == target
+You may return the answer in any order.
+
+Input: nums = [1,0,-1,0,-2,2], target = 0
+Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+
+- [ ] 2024-09-17 : 
