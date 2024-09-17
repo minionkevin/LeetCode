@@ -1,8 +1,8 @@
 # HashTable-合集
 
-|Date\Question|202-E|001-E|454-M|
-|:----:|:----:|:----:|:----:|
-|2024-09-09|Y|Y|X|
+|Date\Question|202-E|001-E|454-M|383-E|
+|:----:|:----:|:----:|:----:|:----:|
+|2024-09-09|Y|Y|X|Y|
 
 ## 202 Happy Number
 Write an algorithm to determine if a number n is happy.
@@ -179,4 +179,86 @@ public int FourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
     }
 }
 
+```
+
+## 383 Ransom Note
+Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
+Each letter in magazine can only be used once in ransomNote.
+
+Input: ransomNote = "a", magazine = "b"
+Output: false
+
+- [X] 2024-09-17: 05:33
+- [X] 2024-09-17: 02:26
+
+ ```c#
+public class Solution {
+    public bool CanConstruct(string ransomNote, string magazine) {
+        Dictionary<char,int> dic = new Dictionary<char,int>();
+
+        for(int i = 0; i < magazine.Length; i++)
+        {
+            if(dic.ContainsKey(magazine[i]))dic[magazine[i]]++;
+            else dic.Add(magazine[i],1);
+        }
+
+
+        for(int j = 0; j < ransomNote.Length;j++)
+        {
+            if(!dic.ContainsKey(ransomNote[j])) return false;
+            else
+            {
+                dic[ransomNote[j]]--;
+                if(dic[ransomNote[j]]<0)return false;
+            }
+        }
+        return true;
+
+    }
+}
+```
+
+```c#
+public class Solution {
+    public bool CanConstruct(string ransomNote, string magazine) {
+        List<int> list = new List<int>();
+
+        for(int i = 0; i < magazine.Length; i++)
+        {
+            list.Add(magazine[i] - 'a');
+        }
+
+
+        for(int j = 0; j < ransomNote.Length;j++)
+        {
+            if(!list.Contains(ransomNote[j]-'a')) return false;
+            else list.Remove(ransomNote[j]-'a');
+        }
+        return true;
+    }
+}
+```
+
+// 因为只有26个因为字母，可以用index来代表字母，数组存的数组代表字母出现的次数
+// magazine应该是更长的数组，因为每个字母只能用一次
+// 查了magazine之后可以立刻检查ransomNote
+``` c#
+public class Solution {
+    public bool CanConstruct(string ransomNote, string magazine) {
+        if(ransomNote.Length > magazine.Length) return false;
+
+        int[] nums = new int[26];
+        for(int i = 0; i < magazine.Length;i++)
+        {
+            nums[magazine[i] - 'a']++;
+            if(i<ransomNote.Length) nums[ransomNote[i] - 'a']--;
+        }
+
+        foreach(int i in nums)
+        {
+            if(i<0) return false;
+        }
+        return true;
+    }
+}
 ```
