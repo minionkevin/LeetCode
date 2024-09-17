@@ -1,8 +1,8 @@
 # HashTable-合集
 
-|Date\Question|202-E|001-E|
-|:----:|:----:|:----:|
-|2024-09-09|Y|Y|
+|Date\Question|202-E|001-E|454-M|
+|:----:|:----:|:----:|:----:|
+|2024-09-09|Y|Y|X|
 
 ## 202 Happy Number
 Write an algorithm to determine if a number n is happy.
@@ -137,4 +137,46 @@ public class Solution {
         return new int[]{0, 0};
     }
 }
+```
+
+## 454 4Sum II
+Given four integer arrays nums1, nums2, nums3, and nums4 all of length n, return the number of tuples (i, j, k, l) such that:
+0 <= i, j, k, l < n
+nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0
+
+Input: nums1 = [0], nums2 = [0], nums3 = [0], nums4 = [0]
+Output: 1
+
+ - [ ] 2024-09-17: 00:00
+![image](https://github.com/user-attachments/assets/ce82f050-325f-45ab-93a8-b0161afc9169)
+
+```c#
+public class Solution {
+public int FourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
+       Dictionary<int, int> dic = new Dictionary<int, int>();
+        // 因为是双层循环，会找到每一个两数组之前的和
+        foreach(var i in nums1){
+            foreach(var j in nums2){
+                int sum = i + j;
+                if(dic.ContainsKey(sum)){
+                    dic[sum]++;
+                }else{
+                    dic.Add(sum, 1);
+                }
+                
+            }
+        }
+        int res = 0;
+         foreach(var a in nums3){
+            foreach(var b in nums4){
+                int sum = a+b;
+                if(dic.TryGetValue(-sum, out var result)){
+                    res += result;
+                }
+            }
+        }
+        return res;
+    }
+}
+
 ```
