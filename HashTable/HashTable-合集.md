@@ -1,8 +1,8 @@
 # HashTable-合集
 
-|Date\Question|202-E|001-E|454-M|383-E|
-|:----:|:----:|:----:|:----:|:----:|
-|2024-09-09|Y|Y|X|Y|
+|Date\Question|202-E|001-E|454-M|383-E|15-M|
+|:----:|:----:|:----:|:----:|:----:|:----:|
+|2024-09-09|Y|Y|X|Y| |
 
 ## 202 Happy Number
 Write an algorithm to determine if a number n is happy.
@@ -259,6 +259,111 @@ public class Solution {
             if(i<0) return false;
         }
         return true;
+    }
+}
+```
+
+## 15 3Sum
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+Notice that the solution set must not contain duplicate triplets.
+
+Input: nums = [0,1,1]
+Output: []
+Explanation: The only possible triplet does not sum up to 0.
+
+- [ ] 2024-09-17 : 28:21
+
+// result还需要查重
+```c#
+public class Solution {
+    public IList<IList<int>> ThreeSum(int[] nums) {
+        int left = 0;
+        int right = 2;
+        int i = 1;
+        IList<IList<int>> result = new List<IList<int>>();
+        
+        while(left < right)
+        {
+            if(right == nums.Length)
+            {
+                left++;
+                right = left + 2;
+                i = left+1;
+                if(right >= nums.Length-1) break;
+            }
+            
+                if(nums[i]+nums[left]+nums[right] == 0) 
+                {
+                    IList<int> tmp = new List<int>();
+                    tmp.Add(nums[i]);
+                    tmp.Add(nums[left]);
+                    tmp.Add(nums[right]);
+                    if(!result.Contains(tmp))result.Add(tmp);
+                }
+                
+            right++;
+            i++;
+        }
+    
+        return result;
+    }
+}
+```
+题解
+```c#
+public class Solution
+{
+    public IList<IList<int>> ThreeSum(int[] nums)
+    {
+        var result = new List<IList<int>>();
+
+        Array.Sort(nums);
+
+        for (int i = 0; i < nums.Length - 2; i++)
+        {
+            int n1 = nums[i];
+
+            if (n1 > 0)
+                break;
+
+            if (i > 0 && n1 == nums[i - 1])
+                continue;
+
+            int left = i + 1;
+            int right = nums.Length - 1;
+
+            while (left < right)
+            {
+                int n2 = nums[left];
+                int n3 = nums[right];
+                int sum = n1 + n2 + n3;
+
+                if (sum > 0)
+                {
+                    right--;
+                }
+                else if (sum < 0)
+                {
+                    left++;
+                }
+                else
+                {
+                    result.Add(new List<int> { n1, n2, n3 });
+
+                    while (left < right && nums[left] == n2)
+                    {
+                        left++;
+                    }
+
+                    while (left < right && nums[right] == n3)
+                    {
+                        right--;
+                    }
+                }
+            }
+        }
+
+        return result;
     }
 }
 ```
