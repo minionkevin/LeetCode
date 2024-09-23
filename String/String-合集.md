@@ -1,8 +1,8 @@
 # String-合集
 
-|Date\Question|334-E|541-E|151-M|
-|:----:|:----:|:----:|:----:|
-|2024-09-17/23|Y|X|Y|
+|Date\Question|334-E|541-E|151-M|28-E|
+|:----:|:----:|:----:|:----:|:----:|
+|2024-09-17/23|Y|X|Y| |
 
 
 ## 344 Reverse String
@@ -87,6 +87,42 @@ public class Solution {
         }
 
     return sb.ToString();
+    }
+}
+```
+
+## 28 Find the Index of the First Occurrence in a String
+Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+Input: haystack = "sadbutsad", needle = "sad"
+Output: 0
+Explanation: "sad" occurs at index 0 and 6.
+The first occurrence is at index 0, so we return 0.
+
+- [X] 2024-09-23 : 07:21
+
+// KMP ?
+```c#
+public class Solution {
+    public int StrStr(string haystack, string needle) {
+        if(needle.Length > haystack.Length) return -1;
+
+        for(int i = 0; i < haystack.Length; i++)
+        {
+            int tmp = i;
+            int needlePoint = 0;
+            while(needlePoint < needle.Length && tmp < haystack.Length)
+            {
+                if(needle[needlePoint]==haystack[tmp])
+                {
+                    if(needlePoint == needle.Length-1) return i;
+                    tmp++;
+                    needlePoint++;
+                }
+                else break;
+            }
+        }
+        return -1;
     }
 }
 ```
