@@ -2,7 +2,7 @@
 
 |Date\Question|334-E|541-E|151-M|28-E|
 |:----:|:----:|:----:|:----:|:----:|
-|2024-09-17/23|Y|X|Y| |
+|2024-09-17/23|Y|X|Y|X|
 
 
 ## 344 Reverse String
@@ -102,6 +102,7 @@ The first occurrence is at index 0, so we return 0.
 - [X] 2024-09-23 : 07:21
 
 // KMP ?
+// 就算不用kmp也可以省去一个for，用一个while loop中的fast和slow来表示
 ```c#
 public class Solution {
     public int StrStr(string haystack, string needle) {
@@ -123,6 +124,33 @@ public class Solution {
             }
         }
         return -1;
+    }
+}
+```
+
+```c#
+public class Solution {
+    public int StrStr(string haystack, string needle) {
+        int slow = 0, fast =0;
+        int needleCount = 0;
+        if(needle.Length > haystack.Length) return -1;
+
+        while(fast < haystack.Length && needleCount < needle.Length)
+        {
+            if(haystack[fast] == needle[needleCount])
+            {
+                fast++;
+                needleCount++;
+            }
+            else
+            {
+                slow++;
+                fast = slow;
+                needleCount = 0;
+            }
+        }
+
+        return needleCount == needle.Length ? slow : -1;
     }
 }
 ```
