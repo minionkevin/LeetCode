@@ -1,8 +1,8 @@
 # String-合集
 
-|Date\Question|334-E|541-E|
-|:----:|:----:|:----:|
-|2024-09-17/23|Y|X|
+|Date\Question|334-E|541-E|151-M|
+|:----:|:----:|:----:|:----:|
+|2024-09-17/23|Y|X|Y|
 
 
 ## 344 Reverse String
@@ -58,6 +58,35 @@ public class Solution {
             }
         }
         return new string(ch);
+    }
+}
+```
+
+## Reverse Words in a String
+Given an input string s, reverse the order of the words.
+A word is defined as a sequence of non-space characters. The words in s will be separated by at least one space.
+Return a string of the words in reverse order concatenated by a single space.
+Note that s may contain leading or trailing spaces or multiple spaces between two words. The returned string should only have a single space separating the words. Do not include any extra spaces.
+
+Input: s = "the sky is blue"
+Output: "blue is sky the"
+
+- [X] 2024-09-23 : 5:00
+
+```c#
+public class Solution {
+    public string ReverseWords(string s) {
+        char[] chs = { ' ' };
+        string[] tmp = s.Split(chs,options:StringSplitOptions.RemoveEmptyEntries);
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = tmp.Length - 1; i >=0 ; i--)
+        {
+            sb.Append(tmp[i]);
+            if(i !=0 )sb.Append(' ');
+        }
+
+    return sb.ToString();
     }
 }
 ```
