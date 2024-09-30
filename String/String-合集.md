@@ -1,8 +1,8 @@
 # String-合集
 
-|Date\Question|334-E|541-E|151-M|28-E|
-|:----:|:----:|:----:|:----:|:----:|
-|2024-09-17/23|Y|X|Y|X|
+|Date\Question|334-E|541-E|151-M|28-E|459-E|
+|:----:|:----:|:----:|:----:|:----:|:----:|
+|2024-09-17/23/30|Y|X|Y|X|X|
 
 
 ## 344 Reverse String
@@ -152,5 +152,57 @@ public class Solution {
 
         return needleCount == needle.Length ? slow : -1;
     }
+}
+```
+
+## 459 Repeated Substring Pattern
+Given a string s, check if it can be constructed by taking a substring of it and appending multiple copies of the substring together.
+
+Input: s = "abab"
+Output: true
+Explanation: It is the substring "ab" twice.
+
+- [ ] 2024-09-30 : 05:03
+
+![image](https://github.com/user-attachments/assets/8b893568-6304-414c-bbf5-513311d73ab7)
+```c#
+public class Solution {
+    public bool RepeatedSubstringPattern(string s) {
+        string t = s + s;
+
+        t = t.Substring(1, t.Length - 2);
+
+        if (t.Contains(s)) {
+            return true;
+        }
+        return false;
+    }
+}
+```
+//KMP
+```C#
+public class Solution {
+public bool RepeatedSubstringPattern(string s)
+{
+    if (s.Length == 0)
+        return false;
+    int[] next = GetNext(s);
+    int len = s.Length;
+    if (next[len - 1] != 0 && len % (len - next[len - 1]) == 0) return true;
+    return false;
+}
+public int[] GetNext(string s)
+{
+    int[] next = Enumerable.Repeat(0, s.Length).ToArray();
+    for (int i = 1, j = 0; i < s.Length; i++)
+    {
+        while (j > 0 && s[i] != s[j])
+            j = next[j - 1];
+        if (s[i] == s[j])
+            j++;
+        next[i] = j;
+    }
+    return next;
+}
 }
 ```
